@@ -33,6 +33,9 @@ def find_center(mask: np.ndarray):
     m10 = np.sum(mask * np.arange(mask.shape[1]))
     m01 = np.sum(mask * np.arange(mask.shape[0]).reshape(-1, 1))
 
+    if m00 == 0:
+        return False
+
     return (int(m10 / m00), int(m01 / m00))
 
 
@@ -47,7 +50,7 @@ def main():
     img_ycbcr = to_ycbcr(img)
     mask = create_mask(img_ycbcr, 85, 115, 135, 165)
     filtered_mask = filter_mask(mask)
-    x, y = find_center(filtered_mask)
+    center = find_center(filtered_mask)
 
     plt.subplot(1, 5, 1)
     plt.imshow(img)
@@ -72,13 +75,13 @@ def main():
     plt.subplot(1, 5, 5)
     plt.imshow(filtered_mask, "grey")
     plt.axis("off")
-    plt.axhline(y, color="red")
-    plt.axvline(x, color="red")
+    if center:
+        plt.axhline(center[1], color="red")
+        plt.axvline(center[0], color="red")
     plt.title("Center")
 
     plt.tight_layout()
     plt.gcf().set_size_inches((15, 5))
-    plt.savefig("img/output.png", bbox_inches="tight")
     plt.show()
 
 
