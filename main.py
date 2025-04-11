@@ -55,7 +55,7 @@ def main():
     plt.subplot(1, 5, 1)
     plt.imshow(img)
     plt.axis("off")
-    plt.title("Oryginal")
+    plt.title("Original")
 
     plt.subplot(1, 5, 2)
     plt.imshow(img_ycbcr)
