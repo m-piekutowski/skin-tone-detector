@@ -1,6 +1,5 @@
 # Skin Tone Detector
-A simple script that locates the center of an area with skintone like colors.  
-The output of this script serves as a reference for implementing the same procedure on an FPGA-based system.
+A simple script that locates the center of an area with skintone like colors. The output of this script serves as a reference for implementing the same procedure on an FPGA-based system.
 
 ## Processing Steps
 - Read the given image  
